@@ -1,0 +1,141 @@
+---
+- name: Stop Zookeeper
+  hosts: zookeeper
+  gather_facts: false
+  tags: zookeeper
+  vars:
+    ansible_os_family: OS
+  tasks:
+    - import_role:
+        name: variables
+
+    - name: Run Zookeeper with Environment Variables
+      shell: |
+        {{ script_path }}/zookeeper_stop.sh
+      environment:
+        # JAVA_HOME: "/cp-data/openjdk11"
+
+    - name: Stopup Delay (10s)
+      wait_for:
+        timeout: 10
+
+- name: Stop Kafka Broker
+  hosts: kafka_broker
+  gather_facts: false
+  tags: kafka_broker
+  vars:
+    ansible_os_family: OS
+  tasks:
+    - import_role:
+        name: variables
+
+    - name: Run Kafka Broker with Environment Variables
+      shell: |
+        {{ script_path }}/kafka_broker_stop.sh
+      environment:
+        # JAVA_HOME: "/cp-data/openjdk11"
+
+    - name: Stopup Delay (20s)
+      wait_for:
+        timeout: 20
+
+- name: Stop Schema Registry
+  hosts: schema_registry
+  gather_facts: false
+  tags: schema_registry
+  vars:
+    ansible_os_family: OS
+  tasks:
+    - import_role:
+        name: variables
+
+    - name: Run Schema Registry with Environment Variables
+      shell: |
+        {{ script_path }}/schema_registry_stop.sh
+      environment:
+        # JAVA_HOME: "/cp-data/openjdk11"
+    
+    - name: Stopup Delay (15s)
+      wait_for:
+        timeout: 15
+
+
+- name: Stop Kafka Connect
+  hosts: kafka_connect
+  gather_facts: false
+  tags: kafka_connect
+  vars:
+    ansible_os_family: OS
+  tasks:
+    - import_role:
+        name: variables
+
+    - name: Run Kafka Connect with Environment Variables
+      shell: |
+        {{ script_path }}/kafka_connect_stop.sh
+      environment:
+        # JAVA_HOME: "/cp-data/openjdk11"
+
+    - name: Stopup Delay (30s)
+      wait_for:
+        timeout: 30
+
+- name: Stop Kafka REST
+  hosts: kafka_rest
+  gather_facts: false
+  tags: kafka_rest
+  vars:
+    ansible_os_family: OS
+  tasks:
+    - import_role:
+        name: variables
+
+    - name: Run Kafka REST with Environment Variables
+      shell: |
+        {{ script_path }}/kafka_rest_stop.sh
+      environment:
+        # JAVA_HOME: "/cp-data/openjdk11"
+
+    - name: Stopup Delay (15s)
+      wait_for:
+        timeout: 15
+
+- name: Stop Control Center
+  hosts: control_center
+  gather_facts: false
+  tags: control_center
+  vars:
+    ansible_os_family: OS
+  tasks:
+    - import_role:
+        name: variables
+
+    - name: Run Control Center with Environment Variables
+      shell: |
+        {{ script_path }}/control_center_stop.sh
+      environment:
+        # JAVA_HOME: "/cp-data/openjdk11"
+
+    - name: Stopup Delay (30s)
+      wait_for:
+        timeout: 30
+
+- name: Stop ksqlDB
+  hosts: ksql
+  gather_facts: false
+  tags: ksql
+  vars:
+    ansible_os_family: OS
+  tasks:
+    - import_role:
+        name: variables
+
+    - name: Run ksqlDB with Environment Variables
+      shell: |
+        {{ script_path }}/ksql_stop.sh
+      environment:
+        # JAVA_HOME: "/cp-data/openjdk11"
+
+    - name: Stopup Delay (20s)
+      wait_for:
+        timeout: 20

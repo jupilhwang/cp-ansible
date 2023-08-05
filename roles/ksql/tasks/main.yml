@@ -370,6 +370,9 @@
     - systemd
     - privileged
 
+- name: (Non-root deployment) Create Start Stop Script
+  include_tasks: create_start_stop_script.yml
+
 - name: Certs were Updated - Trigger Restart
   command: /bin/true
   notify: restart ksql

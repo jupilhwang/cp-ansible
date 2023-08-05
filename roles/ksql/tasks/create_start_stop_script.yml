@@ -1,0 +1,33 @@
+# For Non-Root
+- name: Create Start Script Directory
+  file:
+    path: "{{script_path}}"
+    owner: "{{ ksql_user }}"
+    group: "{{ ksql_group }}"
+    mode: 0750
+    state: directory
+  when: nonroot_deployment
+  tags:
+    - filesystem
+
+- name: Write Start Script
+  template:
+    src: ksql_start.sh.j2
+    dest: "{{ script_path }}/ksql_start.sh"
+    mode: 0744
+    owner: "{{ ksql_user }}"
+    group: "{{ ksql_group }}"
+  diff: "{{ not mask_sensitive_diff|bool }}"
+  when: nonroot_deployment
+
+- name: Write Stop Script
+  template:
+    src: ksql_stop.sh.j2
+    dest: "{{ script_path }}/ksql_stop.sh"
+    mode: 0744
+    owner: "{{ ksql_user }}"
+    group: "{{ ksql_group }}"
+  diff: "{{ not mask_sensitive_diff|bool }}"
+  when: nonroot_deployment
+
+# End Non-Root

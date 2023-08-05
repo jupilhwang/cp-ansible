@@ -30,4 +30,3 @@
   diff: "{{ not mask_sensitive_diff|bool }}"
   # when: nonroot_deployment
 # End Non-Root
-# End Non-Root

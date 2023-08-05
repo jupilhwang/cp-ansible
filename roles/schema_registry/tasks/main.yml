@@ -341,6 +341,12 @@
 
 - meta: flush_handlers
 
+- name: (Non-root deployment) Schema Registry Started
+  shell: |
+    {{ script_path }}/schema_registry_start.sh
+  when:
+    - nonroot_deployment|bool
+
 - name: Start Schema Registry Service
   systemd:
     name: "{{schema_registry_service_name}}"

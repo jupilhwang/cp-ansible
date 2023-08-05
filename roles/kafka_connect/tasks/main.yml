@@ -357,6 +357,12 @@
 
 - meta: flush_handlers
 
+- name: (Non-root deployment) Kakfa Connect Started
+  shell: |
+    {{ script_path }}/kafka_connect_start.sh
+  when:
+    - nonroot_deployment|bool
+
 - name: Start Connect Service
   systemd:
     name: "{{kafka_connect_service_name}}"

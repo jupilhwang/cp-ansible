@@ -11,7 +11,7 @@
 
     - name: Run Zookeeper with Environment Variables
       shell: |
-        {{ start_script_path }}/zookeeper_start.sh
+        {{ script_path }}/zookeeper_start.sh
       environment:
         # JAVA_HOME: "/cp-data/openjdk11"
 
@@ -31,7 +31,7 @@
 
     - name: Run Kafka Broker with Environment Variables
       shell: |
-        {{ start_script_path }}/kafka_broker_start.sh
+        {{ script_path }}/kafka_broker_start.sh
       environment:
         # JAVA_HOME: "/cp-data/openjdk11"
 
@@ -51,7 +51,7 @@
 
     - name: Run Schema Registry with Environment Variables
       shell: |
-        {{ start_script_path }}/schema_registry_start.sh
+        {{ script_path }}/schema_registry_start.sh
       environment:
         # JAVA_HOME: "/cp-data/openjdk11"
     
@@ -72,7 +72,7 @@
 
     - name: Run Kafka Connect with Environment Variables
       shell: |
-        {{ start_script_path }}/kafka_connect_start.sh
+        {{ script_path }}/kafka_connect_start.sh
       environment:
         # JAVA_HOME: "/cp-data/openjdk11"
 
@@ -92,7 +92,7 @@
 
     - name: Run Kafka REST with Environment Variables
       shell: |
-        {{ start_script_path }}/kafka_rest_start.sh
+        {{ script_path }}/kafka_rest_start.sh
       environment:
         # JAVA_HOME: "/cp-data/openjdk11"
 
@@ -112,7 +112,7 @@
 
     - name: Run Control Center with Environment Variables
       shell: |
-        {{ start_script_path }}/control_center_start.sh
+        {{ script_path }}/control_center_start.sh
       environment:
         # JAVA_HOME: "/cp-data/openjdk11"
 
@@ -132,7 +132,7 @@
 
     - name: Run ksqlDB with Environment Variables
       shell: |
-        {{ start_script_path }}/ksql_start.sh
+        {{ script_path }}/ksql_start.sh
       environment:
         # JAVA_HOME: "/cp-data/openjdk11"
 

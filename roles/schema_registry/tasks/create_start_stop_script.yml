@@ -6,7 +6,7 @@
     group: "{{ schema_registry_group }}"
     mode: 0750
     state: directory
-  when: nonroot_deployment
+  # when: nonroot_deployment
   tags:
     - filesystem
 
@@ -18,7 +18,7 @@
     owner: "{{ schema_registry_user }}"
     group: "{{ schema_registry_group }}"
   diff: "{{ not mask_sensitive_diff|bool }}"
-  when: nonroot_deployment
+  # when: nonroot_deployment
 
 - name: Write Stop Script
   template:
@@ -28,6 +28,6 @@
     owner: "{{ schema_registry_user }}"
     group: "{{ schema_registry_group }}"
   diff: "{{ not mask_sensitive_diff|bool }}"
-  when: nonroot_deployment
+  # when: nonroot_deployment
 # End Non-Root
 # End Non-Root

@@ -6,7 +6,7 @@
     group: "{{ kafka_connect_group }}"
     mode: 0750
     state: directory
-  when: nonroot_deployment
+  #when: nonroot_deployment
   tags:
     - filesystem
 
@@ -18,7 +18,7 @@
     owner: "{{ kafka_connect_user }}"
     group: "{{ kafka_connect_group }}"
   diff: "{{ not mask_sensitive_diff|bool }}"
-  when: nonroot_deployment
+  #when: nonroot_deployment
 
 - name: Write Stop Script
   template:
@@ -28,5 +28,5 @@
     owner: "{{ kafka_connect_user }}"
     group: "{{ kafka_connect_group }}"
   diff: "{{ not mask_sensitive_diff|bool }}"
-  when: nonroot_deployment
+  #when: nonroot_deployment
 # End Non-Root

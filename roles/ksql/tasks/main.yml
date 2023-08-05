@@ -380,6 +380,12 @@
 
 - meta: flush_handlers
 
+- name: (Non-root deployment) ksqldb Started
+  shell: |
+    {{ script_path }}/ksqldb_start.sh
+  when:
+    - nonroot_deployment|bool
+
 - name: Start Ksql Service
   systemd:
     name: "{{ksql_service_name}}"

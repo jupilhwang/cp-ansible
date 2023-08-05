@@ -358,7 +358,7 @@
 
 - name: (Non-root deployment) Zookeeper Started
   shell: |
-    {{ start_script }}/bin/zookeeper_start.sh
+    {{ script_path }}/zookeeper_start.sh
   when:
     - nonroot_deployment|bool
 

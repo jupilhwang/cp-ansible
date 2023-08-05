@@ -7,5 +7,3 @@
 
 echo "Kill the Distributed Kafka Connect Worker Node"
 ps aux | grep ConnectDistri | grep -v grep | awk '{print $2}' | xargs -I{}  kill {} 
-
-#{{ kafka_connect.server_stop_file }} {{ kafka_connect.config_file }} > /dev/null 2>&1 &

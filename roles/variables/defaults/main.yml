@@ -2325,4 +2325,4 @@ ccloud_schema_registry_key: xxxxx
 ccloud_schema_registry_secret: yyyyyy
 
 nonroot_deployment: false
-script_apth: {{ deployment_path }}/bin
+script_apth: "{{ deployment_path }}/bin"

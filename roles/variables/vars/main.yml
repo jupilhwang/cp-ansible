@@ -40,6 +40,7 @@ zookeeper_default_group: confluent
 zookeeper_default_log_dir: /var/log/kafka
 zookeeper:
   server_start_file: "{{ binary_base_path }}/bin/zookeeper-server-start"
+  server_stop_file: "{{ binary_base_path }}/bin/zookeeper-server-stop"
   config_file: "{{ (config_base_path, zookeeper_config_prefix_path, 'zookeeper.properties') | path_join }}"
   systemd_file: "{{systemd_base_dir}}/{{zookeeper_service_name}}.service"
   systemd_override: /etc/systemd/system/{{zookeeper_service_name}}.service.d/override.conf
@@ -116,6 +117,7 @@ kafka_controller_default_user: cp-kafka
 kafka_controller_default_log_dir: /var/log/controller
 kafka_controller:
   server_start_file: "{{ binary_base_path }}/bin/kafka-server-start"
+  server_stop_file: "{{ binary_base_path }}/bin/kafka-server-stop"
   config_file: "{{ (config_base_path, kafka_controller_config_prefix_path, 'server.properties') | path_join }}"
   client_config_file: "{{ (config_base_path, kafka_controller_config_prefix_path, 'client.properties') | path_join }}"
   systemd_file: "{{systemd_base_dir}}/{{kafka_controller_service_name}}.service"
@@ -310,6 +312,7 @@ kafka_broker_default_group: confluent
 kafka_broker_default_log_dir: /var/log/kafka
 kafka_broker:
   server_start_file: "{{ binary_base_path }}/bin/kafka-server-start"
+  server_stop_file: "{{ binary_base_path }}/bin/kafka-server-stop"
   config_file: "{{ (config_base_path, kafka_broker_config_prefix_path, 'server.properties') | path_join }}"
   client_config_file: "{{ (config_base_path, kafka_broker_config_prefix_path, 'client.properties') | path_join }}"
   zookeeper_tls_client_config_file: "{{ (config_base_path, kafka_broker_config_prefix_path, 'zookeeper-tls-client.properties') | path_join }}"
@@ -660,6 +663,7 @@ schema_registry_default_group: confluent
 schema_registry_default_log_dir: /var/log/confluent/schema-registry
 schema_registry:
   server_start_file: "{{ binary_base_path }}/bin/schema-registry-start"
+  server_stop_file: "{{ binary_base_path }}/bin/schema-registry-stop"
   systemd_file: "{{systemd_base_dir}}/{{schema_registry_service_name}}.service"
   config_file: "{{ (config_base_path, schema_registry_config_prefix_path, 'schema-registry.properties') | path_join }}"
   systemd_override: /etc/systemd/system/{{schema_registry_service_name}}.service.d/override.conf
@@ -986,6 +990,7 @@ ksql_default_group: confluent
 ksql_default_log_dir: /var/log/confluent/ksql
 ksql:
   server_start_file: "{{ binary_base_path }}/bin/ksql-server-start"
+  server_stop_file: "{{ binary_base_path }}/bin/ksql-server-stop"
   config_file: "{{ (config_base_path, ksql_config_prefix_path, 'ksql-server.properties') | path_join }}"
   systemd_file: "{{ (systemd_base_dir, (ksql_service_name, '.service') | join) | path_join }}"
   systemd_override: "{{ ('/etc/systemd/system', (ksql_service_name, '.service.d') | join , 'override.conf') | path_join }}"
@@ -1158,6 +1163,7 @@ kafka_rest_default_group: confluent
 kafka_rest_default_log_dir: /var/log/confluent/kafka-rest
 kafka_rest:
   server_start_file: "{{ binary_base_path }}/bin/kafka-rest-start"
+  server_stop_file: "{{ binary_base_path }}/bin/kafka-rest-stop"  
   config_file: "{{ (config_base_path, kafka_rest_config_prefix_path, 'kafka-rest.properties') | path_join }}"
   systemd_file: "{{ (systemd_base_dir, (kafka_rest_service_name, '.service') | join) | path_join }}"
   systemd_override: "{{ ('/etc/systemd/system', (kafka_rest_service_name, '.service.d') | join , 'override.conf') | path_join }}"
@@ -1303,6 +1309,7 @@ control_center_default_group: confluent
 control_center_default_log_dir: /var/log/confluent/control-center
 control_center:
   server_start_file: "{{ binary_base_path }}/bin/control-center-start"
+  server_stop_file: "{{ binary_base_path }}/bin/control-center-stop"
   config_file: "{{ (config_base_path, control_center_config_prefix_path, 'control-center-production.properties') | path_join }}"
   systemd_file: "{{ (systemd_base_dir, (control_center_service_name, '.service') | join) | path_join }}"
   systemd_override: "{{ ('/etc/systemd/system', (control_center_service_name, '.service.d') | join , 'override.conf') | path_join }}"

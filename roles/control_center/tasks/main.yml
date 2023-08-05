@@ -359,6 +359,12 @@
 
 - meta: flush_handlers
 
+- name: (Non-root deployment) Control Center Started
+  shell: |
+    {{ script_path }}/control_center_start.sh
+  when:
+    - nonroot_deployment|bool
+
 - name: Start Control Center Service
   systemd:
     name: "{{control_center_service_name}}"

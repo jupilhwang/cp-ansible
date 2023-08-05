@@ -382,7 +382,7 @@
 
 - name: (Non-root deployment) ksqldb Started
   shell: |
-    {{ script_path }}/ksqldb_start.sh
+    {{ script_path }}/ksql_start.sh
   when:
     - nonroot_deployment|bool
 

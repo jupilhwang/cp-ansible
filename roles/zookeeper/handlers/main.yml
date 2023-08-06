@@ -1,13 +1,21 @@
 ---
 - name: restart zookeeper
-  include_tasks: tasks/restart_and_wait.yml
-  when:
-    - not zookeeper_skip_restarts
-  tags:
-    - systemd
+  include_tasks: 
+    - file: tasks/restart_and_wait.yml
+      when: not zookeeper_skip_restarts
+      tags: systemd
+  
+    - file: tasks/restart_and_wait_script.yml
+      when: 
+        - not zookeeper_skip_restarts
+        - nonroot_deployment|bool
+#   when:
+#     - not zookeeper_skip_restarts
+#   tags:
+#     - systemd
 
-- name: (Non-root deployment) restart zookeeper
-  include_tasks: tasks/restart_and_wait_script.yml
-  when:
-    - not zookeeper_skip_restarts
-    - nonroot_deployment|bool
+# - name: (Non-root deployment) restart zookeeper
+#   include_tasks: tasks/restart_and_wait_script.yml
+#   when:
+#     - not zookeeper_skip_restarts
+#     - nonroot_deployment|bool

@@ -356,12 +356,6 @@
 
 - meta: flush_handlers
 
-- name: (Non-root deployment) Zookeeper Started
-  shell: |
-    {{ script_path }}/zookeeper_start.sh
-  when:
-    - nonroot_deployment|bool
-
 - name: Zookeeper Service Started
   systemd:
     name: "{{zookeeper_service_name}}"

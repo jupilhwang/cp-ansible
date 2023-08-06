@@ -11,14 +11,4 @@
     - not zookeeper_skip_restarts
     - nonroot_deployment|bool
   listen: restart zookeeper
-
-#   when:
-#     - not zookeeper_skip_restarts
-#   tags:
-#     - systemd
-
-# - name: (Non-root deployment) restart zookeeper
-#   include_tasks: tasks/restart_and_wait_script.yml
-#   when:
-#     - not zookeeper_skip_restarts
-#     - nonroot_deployment|bool
+  tags: always

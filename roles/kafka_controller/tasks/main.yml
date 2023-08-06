@@ -403,10 +403,7 @@
 - name: Certs were Updated - Trigger Restart
   command: /bin/true
   notify: restart Kafka Controller
-  when: 
-    - certs_updated|bool
-    - not nonroot_deployment|bool
-
+  when: certs_updated|bool
 
 # We need to start MDS here to proceed with secrets protection
 - meta: flush_handlers

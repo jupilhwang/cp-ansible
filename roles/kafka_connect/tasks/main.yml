@@ -353,10 +353,7 @@
 - name: Certs were Updated - Trigger Restart
   command: /bin/true
   notify: restart connect distributed
-  when: 
-    - certs_updated|bool
-    - not nonroot_deployment|bool
-
+  when: certs_updated|bool
 
 - meta: flush_handlers
 

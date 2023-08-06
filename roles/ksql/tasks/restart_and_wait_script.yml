@@ -1,0 +1,12 @@
+---
+- name: (Non-root deployment) Stop Ksql
+  shell: "{{ script_path }}/ksql_stop.sh"
+  when: nonroot_deployment|bool
+
+- name: Startup Delay
+  wait_for:
+    timeout: "{{ ksql_health_check_delay }}"
+
+- name: (Non-root deployment) Start Ksql
+  shell: "{{ script_path }}/ksql_start.sh"
+  when: nonroot_deployment|bool

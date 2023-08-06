@@ -3,3 +3,11 @@
   include_tasks: tasks/restart_and_wait.yml
   when:
     - not kafka_controller_skip_restarts
+  tags:
+    - systemd
+
+- name: (Non-root deployment) restart Kafka Controller
+  include_tasks: tasks/restart_and_wait_script.yml
+  when:
+    - not kafka_controller_skip_restarts
+    - nonroot_deployment|bool

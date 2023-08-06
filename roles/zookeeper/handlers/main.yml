@@ -11,6 +11,7 @@
       when: 
         - not zookeeper_skip_restarts
         - nonroot_deployment|bool
+  tags: always
 #   when:
 #     - not zookeeper_skip_restarts
 #   tags:

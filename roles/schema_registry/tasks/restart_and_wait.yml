@@ -4,9 +4,19 @@
     daemon_reload: true
     name: "{{schema_registry_service_name}}"
     state: restarted
+  when: 
+    - not nonroot_deployment|bool
   tags:
     - systemd
+
+- name: (Non-root deployment) Stop Schema Registry
+  shell: "{{ script_path }}/schema_registry_stop.sh"
+  when: nonroot_deployment|bool
 
 - name: Startup Delay
   wait_for:
     timeout: "{{ schema_registry_health_check_delay }}"
+
+- name: (Non-root deployment) Start Scheam Registry
+  shell: "{{ script_path }}/schema_registry_start.sh"
+  when: nonroot_deployment|bool

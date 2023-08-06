@@ -355,7 +355,10 @@
 - name: Certs were Updated - Trigger Restart
   command: /bin/true
   notify: restart control center
-  when: certs_updated|bool
+  when: 
+    - certs_updated|bool
+    - not nonroot_deployment|bool
+
 
 - meta: flush_handlers
 

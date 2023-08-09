@@ -25,6 +25,7 @@ The services that can be installed from this repository are:
 
 ### 사전 준비해야 할 것
 - 사용자/그룹 생성
+- ansible 사용하기 위한 사용자의 authorized_keys 에 public key 추가
 - Confluent Platform 설치 (data, log, binary, configuration)를 위한 디렉토리
 - JDK 17 
 
